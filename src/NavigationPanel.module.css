@@ -18,7 +18,7 @@
     padding: 15px;
     margin-left: 20px;
 
-    &:hover {
+    & :hover {
       background: #97bf0f;
       color: white;
     }
