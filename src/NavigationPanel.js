@@ -16,25 +16,20 @@ const NavigationPanel = () => (
     <img src="https://i.imgur.com/LWIomzF.png" alt="Logo" />
     <ul>
       <li>
-        <NavLink to="/" exact activeClassName={style.active}>
-          Meet our Teachers
-        </NavLink>
+        <NavLink to="/" exact activeClassName={style.active}>Restaurants</NavLink>
       </li>
       <li>
-        <NavLink exact to="/teachers/new" activeClassName={style.active}>
-          Add Teacher
-        </NavLink>
+        <NavLink exact to="/" activeClassName={style.active}>Reserve</NavLink>
       </li>
       <li>
-        <NavLink exact to="/bookings/new" activeClassName={style.active}>Book a Teacher</NavLink>
+        <NavLink exact to="/" activeClassName={style.active}>Reservations</NavLink>
       </li>
       <li>
-        <NavLink exact to="/bookings" activeClassName={style.active}>My bookings</NavLink>
+        <NavLink exact to="/" activeClassName={style.active}>Add restaurant</NavLink>
       </li>
       <li>
-        <NavLink exact to="/teachers/delete" activeClassName={style.active}>Delete Teacher</NavLink>
+        <NavLink exact to="/" activeClassName={style.active}>Delete restaurant</NavLink>
       </li>
-      <li />
     </ul>
 
     <div className={style.socialMediaBlock}>
