@@ -1,3 +1,4 @@
+/* eslint-disable no-alert, no-console */
 import * as React from 'react';
 import {
   useEffect,
@@ -9,10 +10,16 @@ import {
 import './carousel.css';
 import { Carousel } from 'react-responsive-carousel';
 
-import style from './main.module.scss';
 
+import style from './main.module.scss';
 const Main = () => {
-  
+  const {
+    data: restaurants,
+    error,
+    isLoading,
+    refetch,
+  } = useGetRestaurantsQuery();
+
   useEffect(() => {
     refetch();
   }, []);
@@ -79,54 +86,54 @@ const Main = () => {
     }
   }
   
-  .teacherImage {
+  .restaurantImage {
     width: 250px;
     height: 250px;
     border-radius: 50%;
 
-  function teachersList(teachers) {
+  function restaurantList(restaurants) {
     // eslint-disable-next-line no-nested-ternary
     const divider = window.innerWidth < 1580 ? (window.innerWidth < 1150 ? 1 : 2) : 3;
-    const teachersBlockList = [];
-    let teachersBlock = [];
-    for (let i = 0; i < teachers.length; i += 1) {
-      teachersBlock.push(
-        <div key={teachers[i].id}>
+    const restaurantsBlockList = [];
+    let restaurantsBlock = [];
+    for (let i = 0; i < restaurants.length; i += 1) {
+      restaurantsBlock.push(
+        <div key={restaurants[i].id}>
           <div
-            style={backgroundStyling(teachers[i].professional_photo)}
-            className={style.teacherImage}
+            style={backgroundStyling(restaurants[i].professional_photo)}
+            className={style.restaurantImage}
           />
           <br />
-          <h2>{teachers[i].name}</h2>
+          <h2>{restaurants[i].name}</h2>
           <br />
           <p>
-            {teachers[i].name}
+            {restaurants[i].name}
             {' '}
-            is willing to teach you about
+            Best place to eat!!
             {' '}
-            {teachers[i].subject}
+            {restaurants[i].type}
           </p>
           <br />
           <Link
-            key={teachers[i].id}
+            key={restaurants[i].id}
             href="/#"
-            to={`${url}teachers/${teachers[i].id}`}
+            to={`${url}restaurants/${restaurants[i].id}`}
           >
             See details
           </Link>
         </div>,
       );
       if ((i + 1) % divider === 0) {
-        teachersBlockList.push(teachersBlock);
-        teachersBlock = [];
+        restaurantsBlockList.push(restaurantsBlock);
+        restaurantsBlock = [];
       }
     }
-    if (teachers.length > 0) {
-      teachersBlockList.push(teachersBlock);
+    if (restaurants.length > 0) {
+      restaurantsBlockList.push(restaurantsBlock);
     }
     const carouselBlocks = [];
-    teachersBlockList.forEach((block) => {
-      carouselBlocks.push(
+    restaurantsBlockList.forEach((block) => {
+      restaurantBlocks.push(
         <div>{block}</div>,
       );
     });
@@ -135,10 +142,10 @@ const Main = () => {
 
   return (
     <div className={style.container}>
-      <h1>OUR TEACHERS</h1>
-      <p>Pick one of our Teachers to Start Learning!</p>
+      <h1>OUR Restaurants</h1>
+      <p>Pick one of our Restaurants!</p>
       <div>
-        {teachersList(teachers)}
+        {restaurantsList(restaurants)}
       </div>
     </div>
   );
